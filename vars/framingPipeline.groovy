@@ -3,7 +3,7 @@
 // framimgPipeline(
 //     sections: [
 //         [name: 'Overview', path: 'docs/overview.md'],
-//         [name: 'Problem', path: 'docs/problem.md'],
+//         [name: 'Feasibility', path: 'docs/feasibility.md'],
 //         ...
 //     ],
 //     outputPath: 'docs/Framing.md',
@@ -21,7 +21,7 @@ def call(Map cfg = [:]) {
     boolean runNpmCi = (cfg.runNpmCi == null ? true : cfg.runNpmCi) as boolean
     String docsCiCmd = (cfg.docsCiCmd ?: 'npm run docs:ci') as String
     String pandocOutput = (cfg.pandocOutput ?: '') as String
-    String agentLabel = (cfg.agentLabel ?: 'any') as String
+    String agentLabel = (cfg.agentLabel ?: 'pi-agent') as String
     String todoPolicy = (cfg.todoPolicy ?: 'failOnMainAfterCompile') as String
     List<String> todoTokens = (cfg.todoTokens ?: ['TODO', 'TBD', 'FIXME']) as List<String>
 
