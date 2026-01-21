@@ -86,7 +86,7 @@ def call(Map cfg = [:]) {
                     if (lines.size() > 10) echo "    ... (${lines.size() - 10} more in this file)"
                 }
 
-                boolean isPR = (env.CHANGE_ID ?: "").trim()
+                boolean isPR = ((env.CHANGE_ID ?: "").trim() != "")
                 boolean isMain = ['main', 'master'].contains((env.BRANCH_NAME ?: '').trim())
 
                 switch(todoPolicy) {
@@ -143,7 +143,7 @@ def scanForPlaceholders(List<String> paths, List<String> tokens) {
 
     def results = [:].withDefault { [] }
 
-    path.each { p -> 
+    paths.each { p -> 
         if (!fileExists(p)) return
 
         def lines = (readFile(file: p) ?: "").readLines()
