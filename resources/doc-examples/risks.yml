@@ -1,0 +1,77 @@
+risk_analysis:
+  version: 1
+  last_updated: "YYYY-MM-DD"
+
+  scoring:
+    likelihood_scale:
+      min: 1
+      max: 5
+      meanings:
+        1: "Rare"
+        2: "Unlikely"
+        3: "Possible"
+        4: "Likely"
+        5: "Almost certain"
+    impact_scale:
+      min: 1
+      max: 5
+      meanings:
+        1: "Minimal"
+        2: "Minor"
+        3: "Moderate"
+        4: "Major"
+        5: "Critical"
+    score_formula: "likelihood * impact**2"
+    priority_bands:
+      high:
+        min: 25
+        max: 125
+      medium:
+        min: 10
+        max: 24
+      low:
+        min: 1
+        max: 9
+
+  governance:
+    sort_order: "score_desc_then_id_asc"
+    required_fields:
+      - id
+      - title
+      - category
+      - description
+      - triggers
+      - likelihood
+      - impact
+      - mitigation
+      - contingency
+      - status
+    allowed_status:
+      - Open
+      - Mitigating
+      - Accepted
+      - Closed
+    categories:
+      - Technical
+      - Security_Privacy
+      - Operational
+      - Schedule
+      - Resource_Cost
+      - Dependency_Vendor
+      - Legal_Compliance
+
+  items:
+    - id: "R-001"
+      title: "<short label>"
+      category: "Technical"
+      description: "<what could go wrong + why it matters>"
+      triggers:
+        - "<early warning sign 1>"
+        - "<early warning sign 2>"
+      likelihood: 3
+      impact: 4
+      mitigation:
+        - "<how we reduce likelihood>"
+      contingency:
+        - "<what we do if it happens>"
+      status: "Open"

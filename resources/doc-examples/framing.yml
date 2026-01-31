@@ -1,0 +1,26 @@
+allowed_extensions:
+  - .md
+  - .yml
+  - .yaml
+
+required_docs:
+  - 00-overview.md
+  - 01-requirements.md
+  - 02-slices.md
+  - risks.yml
+  - 04-feasibility.md
+
+required_subsections:
+  00-overview.md:
+    - Problem
+    - Objectives
+    - Scope
+  01-requirements.md:
+    - Functional Requirements
+    - Non-Functional Requirements
+  04-feasibility.md:
+    - Social Feasibility
+    - Technical Feasibility
+    - Financial Feasibility
+    - Schedule Feasibility
+    - Results
