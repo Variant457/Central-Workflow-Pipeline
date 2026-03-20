@@ -1,0 +1,110 @@
+project:
+  name: "My Project Name"
+  code: "PRJ-001"
+
+allowed_extensions:
+  - .md
+  - .yml
+  - .yaml
+
+docs:
+  00-overview.md:
+    type: markdown
+    required_subsections:
+      - Problem
+      - Objectives
+      - Scope
+
+  01-requirements.md:
+    type: markdown
+    required_subsections:
+      - Functional Requirements
+      - Non-Functional Requirements
+      - Constraints and Assumptions
+
+  02-slices.yml:
+    type: structured
+    schema:
+      required_fields:
+        - id
+        - title
+        - description
+        - rationale
+        - status
+      allowed_status:
+        - Proposed
+        - On Hold
+        - Dropped
+      id_pattern: "SLC-###"
+      min_items: 1
+
+  03-risks.yml:
+    type: structured
+    schema:
+      self_validating: true
+
+  04-feasibility.md:
+    type: markdown
+    required_subsections:
+      - Social Feasibility
+      - Technical Feasibility
+      - Financial Feasibility
+      - Schedule Feasibility
+      - Results
+
+compile:
+  title_page:
+    project_name: true
+    version: auto
+    date: auto
+    status: true
+
+  table_of_contents: true
+
+  sections:
+    - source: 00-overview.md
+      title: "Project Overview"
+    - source: 01-requirements.md
+      title: "Requirements"
+    - source: 02-slices.yml
+      title: "Proposed Slices"
+      render: table
+      columns:
+        - id
+        - title
+        - status
+      detailed_fields:
+        - description
+        - rationale
+    - source: 03-risks.yml
+      title: "Risk Analysis"
+      render: table
+      columns:
+        - id
+        - category
+        - score
+        - title
+        - likelihood
+        - impact
+        - status
+      detail_fields:
+        - description
+        - triggers
+        - mitigation
+        - contingency
+    - source: 04-feasibility.md
+      title: "Feasibility Analysis"
+
+  appendix:
+    - type: risk_matrix
+      title: "Risk Scoring Matrix"
+    - type: slice_summary
+      title: "Slice State Summary"
+
+  outputs:
+    - format: markdown
+      filename: "project-framing.md"
+    - format: pdf
+      filename: "project-framing.pdf"
+      from: "project-framing.md"
+      template: "templates/framing-pdf.template"

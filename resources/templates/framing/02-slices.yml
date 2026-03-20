@@ -1,0 +1,10 @@
+slices:
+  version: 1
+  last_updated: "YYYY-MM-DD"
+
+  items:
+    - id: "SLC-001"
+      title: "<short label>"
+      description: "<what the user can do - the elevator pitch>"
+      rationale: "<why the slice belonfs in this project>"
+      status: "Proposed"

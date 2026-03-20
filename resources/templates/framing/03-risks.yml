@@ -34,6 +34,7 @@ risk_analysis:
         max: 9
 
   governance:
+    id_pattern: "R-###"
     sort_order: "score_desc_then_id_asc"
     required_fields:
       - id
@@ -46,6 +47,10 @@ risk_analysis:
       - mitigation
       - contingency
       - status
+    min_array_items:
+      - triggers: 1
+      - mitigation: 1
+      - contingency: 1
     allowed_status:
       - Open
       - Mitigating
@@ -67,7 +72,6 @@ risk_analysis:
       description: "<what could go wrong + why it matters>"
       triggers:
         - "<early warning sign 1>"
-        - "<early warning sign 2>"
       likelihood: 3
       impact: 4
       mitigation:
